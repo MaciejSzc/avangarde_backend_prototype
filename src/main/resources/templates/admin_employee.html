@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Employee</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Typ</th>
+    </tr>
+
+    <tr th:each="employee : ${employees}">
+        <td>
+            <a th:href="'/employee' + ${employee.getId()}"
+               th:text="${'Edytuj'}">
+            </a>
+        </td>
+        <td th:text="${employee.getName()}"></td>
+        <td th:text="${employee.getSurname()}"></td>
+        <td th:text="${employee.getTelephone()}"></td>
+        <td th:text="${employee.getEmail()}"></td>
+        <td th:text="${employee.getDescription()}"></td>
+
+
+    </tr>
+</table>
+<a href="/employee/add">Dodaj pracownika.</a>
+</br></br>
+<a href="/admin">Start.</a>
+<a href="/bookings">Rezerwacje.</a>
+<a href="/clients">Klienci.</a>
+<a href="/serve">Usługi.</a>
+<a href="/warehouse">Magazyn.</a>
+
+</body>
+</html>
