@@ -11,7 +11,6 @@ import java.util.List;
 public class ServeEntity {
     private @Id @GeneratedValue int id;
     private String name;
-    private String summary;
     private String price;
     private String time;
 

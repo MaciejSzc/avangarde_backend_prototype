@@ -7,6 +7,8 @@ import pl.mobilkiwspa.avangarde.models.entities.ServeEntity;
 import pl.mobilkiwspa.avangarde.models.forms.ServeForm;
 import pl.mobilkiwspa.avangarde.models.repositories.ServeRepository;
 
+import java.util.Optional;
+
 @Service
 public class ServeService {
     @Autowired
@@ -21,9 +23,25 @@ public class ServeService {
 
         serveEntity.setName(serveForm.getName());
         serveEntity.setPrice(serveForm.getPrice());
-        serveEntity.setSummary(serveForm.getSummary());
         serveEntity.setTime(serveForm.getTime());
 
         serveRepository.save(serveEntity);
+    }
+
+    public void update(int id, ServeForm serveForm){
+        Optional<ServeEntity> serveEntity = serveRepository.findById(id);
+
+        if(serveEntity.isPresent()){
+            serveEntity.get().setName(serveForm.getName());
+            serveEntity.get().setPrice(serveForm.getPrice());
+            serveEntity.get().setTime(serveForm.getTime());
+
+            serveRepository.save(serveEntity.get());
+        }
+    }
+
+    public ServeEntity getServeById(int id){
+
+        return serveRepository.findById(id).get();
     }
 }

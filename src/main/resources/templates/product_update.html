@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="'/admin/product/update/' + ${product.getId()}" method="post" th:object="${productForm}">
+<div th:object="${product}">
+    Nazwa: <input type="text" th:field="*{name}"> <br/>
+    Ilość: <input type="text" th:field="*{count}"> <br/>
+</div>
+
+
+    <br/><br/>
+
+    <input type="submit" value="Aktualizuj">
+</form>
+</br></br>
+<a href="/admin">Powrót do menu</a>
+</body>
+</html>

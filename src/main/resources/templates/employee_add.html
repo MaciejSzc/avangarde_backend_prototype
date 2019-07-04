@@ -2,9 +2,27 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Add Employee</title>
 </head>
 <body>
+<form action="/admin/employee/add" method="post" th:object="${employeeForm}">
 
+    Name: <input type="text" th:field="*{name}"> <br/>
+    Surname: <input type="text" th:field="*{surname}"> <br/>
+    Telephone: <input type="text" th:field="*{telephone}"> <br/>
+    Email: <input type="text" th:field="*{email}"> <br/>
+    Description: <input type="text" th:field="*{description}"> <br/>
+    Photo: <input type="text" th:field="*{imgUrl}"> <br/>
+
+
+    <br/><br/>
+
+    <input type="submit" value="Dodaj">
+
+
+</form>
+</br></br>
+<a href="/admin">Powrót do menu</a>
+<a href="/admin">Pracownicy</a>
 </body>
 </html>

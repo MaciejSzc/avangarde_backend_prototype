@@ -35,21 +35,33 @@ public class AdminMainController {
 
     @GetMapping("/admin/employee/add")
     public String adminEmployeAdd(Model model){
-        model.addAttribute("employee", new EmployeeForm());
-        return "admin_employee_add";
+        model.addAttribute("employeeForm", new EmployeeForm());
+        return "employee_add";
     }
 
     @PostMapping("/admin/employee/add")
-    public String adminEmployeAddPost(@ModelAttribute("employee") EmployeeForm employeeForm, Model model){
+    public String adminEmployeAddPost(@ModelAttribute EmployeeForm employeeForm, Model model){
         employeeService.addEmployee(employeeForm);
         return "redirect:/admin_employee";
     }
 
-   /* @GetMapping("/update/employee/{id}")
-    public String updateEmployee(@PathVariable("id") int id, Model model){
-        model.addAttribute("employee", new EmployeeForm());
-        return "admin_employee_add";
-    }*/
+    @GetMapping("admin/employee/update/{id}")
+    public String updateEmployee(@PathVariable("id") int id, Model model) {
+        model.addAttribute("employeeForm", new EmployeeForm());
+        model.addAttribute("employee", employeeService.getEmployeeById(id));
+
+        return "employee_update";
+    }
+
+    @PostMapping("admin/employee/update/{id}")
+    public String udatePEmployee(@ModelAttribute EmployeeForm employeeForm, @PathVariable("id") int id, Model model) {
+
+        employeeService.update(id, employeeForm);
+
+        return "redirect:/admin/employee";
+    }
+
+
 //--------------------Booking
     @GetMapping("/admin/booking")
     public String adminBooking(Model model){
@@ -67,15 +79,33 @@ public class AdminMainController {
 
     @GetMapping("/admin/serve/add")
     public String adminServeAdd(Model model){
-        model.addAttribute("serve", new ServeForm());
-        return "admin_serve_add";
+        model.addAttribute("serveForm", new ServeForm());
+        return "serve_add";
     }
 
     @PostMapping("/admin/serve/add")
-    public String adminServeAddPost(@ModelAttribute("serve")ServeForm serveForm, Model model){
+    public String adminServeAddPost(@ModelAttribute ServeForm serveForm, Model model){
         serveService.addServe(serveForm);
         return "redirect:/admin_serve";
     }
+
+    @GetMapping("admin/serve/update/{id}")
+    public String updateServe(@PathVariable("id") int id, Model model) {
+        model.addAttribute("serveForm", new ServeForm());
+        model.addAttribute("serve", serveService.getServeById(id));
+
+        return "serve_update";
+    }
+
+    @PostMapping("admin/serve/update/{id}")
+    public String udatePServe(@ModelAttribute ServeForm serveForm, @PathVariable("id") int id, Model model) {
+
+        serveService.update(id, serveForm);
+
+        return "redirect:/admin/serve";
+    }
+
+
 //--------------------Warehouse
     @GetMapping("/admin/product")
     public String adminProduct(Model model){
@@ -85,14 +115,30 @@ public class AdminMainController {
 
     @GetMapping("/admin/product/add")
     public String adminProductAdd(Model model){
-        model.addAttribute("product", new ProductForm());
-        return "admin_product_add";
+        model.addAttribute("productForm", new ProductForm());
+        return "product_add";
     }
 
     @PostMapping("/admin/product/add")
-    public String adminProductAddPost(@ModelAttribute("employee") ProductForm productForm, Model model){
+    public String adminProductAddPost(@ModelAttribute ProductForm productForm, Model model){
         productService.addProduct(productForm);
         return "redirect:/admin_product";
+    }
+
+    @GetMapping("admin/product/update/{id}")
+    public String updateProduct(@PathVariable("id") int id, Model model) {
+        model.addAttribute("productForm", new ProductForm());
+        model.addAttribute("product", productService.getProductById(id));
+
+        return "product_update";
+    }
+
+    @PostMapping("admin/product/update/{id}")
+    public String udatePEmployee(@ModelAttribute ProductForm productForm, @PathVariable("id") int id, Model model) {
+
+        productService.update(id, productForm);
+
+        return "redirect:/admin/product";
     }
 
 }

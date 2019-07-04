@@ -36,10 +36,24 @@ public class EmployeeService {
         employeeRepository.deleteById(id);
     }
 
-    public void updateEmployee(int id, EmployeeForm employeeForm) {
+    public void update(int id, EmployeeForm employeeForm) {
         Optional<EmployeeEntity> employeeEntity = employeeRepository.findById(id);
 
+        if(employeeEntity.isPresent()) {
+            employeeEntity.get().setName(employeeForm.getName());
+            employeeEntity.get().setSurname(employeeForm.getSurname());
+            employeeEntity.get().setEmail(employeeForm.getEmail());
+            employeeEntity.get().setTelephone(employeeForm.getTelephone());
+            employeeEntity.get().setDescription(employeeForm.getDescription());
+            employeeRepository.save(employeeEntity.get());
+        }
 
+
+    }
+
+    public EmployeeEntity getEmployeeById(int id){
+
+        return employeeRepository.findById(id).get();
     }
 
 

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Product</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Nazwa</th>
+        <th>Ilość</th>
+    </tr>
+
+    <tr th:each="product : ${products}">
+
+        <td th:text="${product.getName()}"></td>
+        <td th:text="${product.getCount()}"></td>
+
+
+        <td>
+            <a th:href="'/admin/product/update' + ${product.getId()}"
+               th:text="${'Edytuj'}">
+            </a>
+        </td>
+
+    </tr>
+</table>
+</br>
+<a href="/admin/employee/add">Dodaj pracownika.</a>
+</br></br>
+<a href="/admin">Powrót do menu</a>
+</body>
+</html>

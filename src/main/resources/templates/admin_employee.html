@@ -9,31 +9,32 @@
     <tr>
         <th>Imię</th>
         <th>Nazwisko</th>
-        <th>Typ</th>
+        <th>Telefon</th>
+        <th>Email</th>
+        <th>Opis</th>
     </tr>
 
     <tr th:each="employee : ${employees}">
-        <td>
-            <a th:href="'/employee' + ${employee.getId()}"
-               th:text="${'Edytuj'}">
-            </a>
-        </td>
+
         <td th:text="${employee.getName()}"></td>
         <td th:text="${employee.getSurname()}"></td>
         <td th:text="${employee.getTelephone()}"></td>
         <td th:text="${employee.getEmail()}"></td>
         <td th:text="${employee.getDescription()}"></td>
 
+        <td>
+            <a th:href="'/admin/employee/update/' + ${employee.getId()}"
+               th:text="${'Edytuj'}">
+            </a>
+        </td>
 
     </tr>
 </table>
-<a href="/employee/add">Dodaj pracownika.</a>
+</br>
+<a href="/admin/employee/add">Dodaj pracownika.</a>
 </br></br>
-<a href="/admin">Start.</a>
-<a href="/bookings">Rezerwacje.</a>
-<a href="/clients">Klienci.</a>
-<a href="/serve">Usługi.</a>
-<a href="/warehouse">Magazyn.</a>
+<a href="/admin">Powrót do menu</a>
+
 
 </body>
 </html>

@@ -19,7 +19,8 @@ public class EmployeeEntity {
     @Column(name = "img_url")
     private String imgUrl;
 
-   /* @OneToMany(mappedBy = "employee", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) //lazy i eager
-            List<BookingEntity> bookings;*/
+
+   @OneToMany(mappedBy = "employee", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) //lazy i eager
+            List<BookingEntity> bookings;
 
 }

@@ -13,6 +13,9 @@ public class BookingService {
     @Autowired
     BookingRepository bookingRepository;
 
+    @Autowired
+    UserService userService;
+
     public Iterable<BookingEntity> getAll() {
         return bookingRepository.findAll();
     }
@@ -22,6 +25,8 @@ public class BookingService {
 
 
     }
+
+
 
 
 }

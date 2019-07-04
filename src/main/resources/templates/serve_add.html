@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Serve</title>
+</head>
+<body>
+<form action="/admin/serve/add" method="post" th:object="${serveForm}">
+
+    Nazwa: <input type="text" th:field="*{name}"> <br/>
+    Cena: <input type="text" th:field="*{price}"> <br/>
+    Czas: <input type="text" th:field="*{time}"> <br/>
+
+
+    <br/><br/>
+
+    <input type="submit" value="Dodaj">
+</form>
+</br></br>
+<a href="/admin">Powrót do menu</a>
+<a href="/admin/serve">Usługi</a>
+</body>
+</html>

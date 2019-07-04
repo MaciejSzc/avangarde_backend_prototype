@@ -7,6 +7,8 @@ import pl.mobilkiwspa.avangarde.models.entities.ServeEntity;
 import pl.mobilkiwspa.avangarde.models.forms.ProductForm;
 import pl.mobilkiwspa.avangarde.models.repositories.ProductRepository;
 
+import java.util.Optional;
+
 @Service
 public class ProductService {
     @Autowired
@@ -27,5 +29,20 @@ public class ProductService {
 
     public void deleteProduct(int id){
         productRepository.deleteById(id);
+    }
+
+    public void update(int id, ProductForm productForm){
+        Optional<ProductEntity> productEntity = productRepository.findById(id);
+        if(productEntity.isPresent()){
+            productEntity.get().setName(productForm.getName());
+            productEntity.get().setCount(productForm.getCount());
+
+            productRepository.save(productEntity.get());
+        }
+    }
+
+    public ProductEntity getProductById(int id){
+
+        return productRepository.findById(id).get();
     }
 }

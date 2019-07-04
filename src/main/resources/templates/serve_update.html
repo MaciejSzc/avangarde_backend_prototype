@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Serve Update</title>
+</head>
+<body>
+<form action="'/admin/serve/update/' + ${serve.getId()}" method="post" th:object="${serveForm}">
+<div th:object="${serve}">
+    Nazwa: <input type="text" th:field="*{name}"> <br/>
+    Cena: <input type="text" th:field="*{price}"> <br/>
+    Czas: <input type="text" th:field="*{time}"> <br/>
+</div>
+
+    <br/><br/>
+
+    <input type="submit" value="Aktualizuj">
+</form>
+</br></br>
+<a href="/admin">Powrót do menu</a>
+</body>
+</html>
