@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Booking</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<table class="table table-hover">
+    <tr>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Ilość</th>
+    </tr>
+
+    <tr th:each="booking : ${bookings}">
+
+        <td th:text="${booking.getDate()}"></td>
+        <td th:text="${booking.getEmployee().getName()}"></td>
+        <td th:text="${booking.getServe().getName()}"></td>
+        <td th:text="${booking.getUser().getName()}"></td>
+
+
+
+    </tr>
+</table>
+<a href="/admin">Powrót do menu</a>
+</body>
+</html>

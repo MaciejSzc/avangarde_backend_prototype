@@ -9,8 +9,7 @@ import javax.persistence.*;
 @Data
 public class HourEntity {
     private @Id @GeneratedValue int id;
-    @Column(name="day_id")
-    private int dayId;
+
     private boolean ten;
     private boolean eleven;
     private boolean twelve;
@@ -20,4 +19,9 @@ public class HourEntity {
     private boolean sixteen;
     private boolean seventeen;
     private boolean eighteen;
+
+
+    @OneToOne
+    @JoinColumn(name = "day_id")
+    private DayEntity day;
 }

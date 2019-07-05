@@ -2,10 +2,16 @@ package pl.mobilkiwspa.avangarde.models.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import pl.mobilkiwspa.avangarde.models.entities.DayEntity;
 import pl.mobilkiwspa.avangarde.models.entities.EmployeeEntity;
+import pl.mobilkiwspa.avangarde.models.entities.HourEntity;
 import pl.mobilkiwspa.avangarde.models.forms.EmployeeForm;
+import pl.mobilkiwspa.avangarde.models.repositories.DayRepository;
 import pl.mobilkiwspa.avangarde.models.repositories.EmployeeRepository;
+import pl.mobilkiwspa.avangarde.models.repositories.HourRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -13,6 +19,15 @@ public class EmployeeService {
 
     @Autowired
     EmployeeRepository employeeRepository;
+
+    @Autowired
+    DayRepository dayRepository;
+
+    @Autowired
+    HourRepository hourRepository;
+
+    @Autowired
+    TimeService timeService;
 
     public Iterable<EmployeeEntity> getAll(){
         return employeeRepository.findAll();
@@ -55,6 +70,28 @@ public class EmployeeService {
 
         return employeeRepository.findById(id).get();
     }
+
+    public List<DayEntity> showAvailableDaysForCurrentEmployee(int employeeId){
+        List<DayEntity> availableDays = new ArrayList<>();
+        List<DayEntity> allDays = dayRepository.getDays(employeeId);
+        for (DayEntity day: allDays) {
+
+            for (HourEntity hour: hourRepository.getHours(day.getId())
+            ) {
+                if (hour.isTen() || hour.isEleven() || hour.isTwelve() || hour.isThirteen() || hour.isFourteen() ||
+                        hour.isFifteen() || hour.isSixteen() || hour.isSeventeen() || hour.isEighteen()){
+                    availableDays.add(day);
+                }
+
+            }
+        }
+
+        return availableDays;
+    }
+
+
+
+
 
 
 }

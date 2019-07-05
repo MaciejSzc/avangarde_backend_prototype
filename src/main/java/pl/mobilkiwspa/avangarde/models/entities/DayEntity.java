@@ -3,6 +3,7 @@ package pl.mobilkiwspa.avangarde.models.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -15,7 +16,10 @@ public class DayEntity {
 
     @ManyToOne
     @JoinColumn(name = "employee_id")
-    private EmployeeEntity employeeEntity;
+    private EmployeeEntity employee;
+
+    @OneToOne(mappedBy = "day")
+    private HourEntity hours;
 
 
 

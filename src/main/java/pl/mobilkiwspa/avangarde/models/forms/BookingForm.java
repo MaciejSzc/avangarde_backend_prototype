@@ -9,5 +9,5 @@ public class BookingForm {
     private int employee_id;
     private int serve_id;
     private int user_form;
-    private Date date;
+    private String date;
 }

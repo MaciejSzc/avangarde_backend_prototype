@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 public class BookingEntity {
     private @Id @GeneratedValue int id;
-    private Date date;
+    private String date;
 
     @OneToOne
     @JoinColumn(name = "user_id")

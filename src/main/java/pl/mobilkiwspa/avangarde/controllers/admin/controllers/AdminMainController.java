@@ -26,6 +26,14 @@ public class AdminMainController {
         this.userService = userService;
 
     }
+    //--------------------Main
+    @GetMapping("/")
+    public String avangarde(){return "avangarde";}
+
+    @GetMapping("/admin")
+        public String adminMain(){
+        return "admin";
+    }
 //--------------------Employee
     @GetMapping("/admin/employee")
     public String adminEmployee(Model model){
@@ -42,7 +50,7 @@ public class AdminMainController {
     @PostMapping("/admin/employee/add")
     public String adminEmployeAddPost(@ModelAttribute EmployeeForm employeeForm, Model model){
         employeeService.addEmployee(employeeForm);
-        return "redirect:/admin_employee";
+        return "redirect:/admin/employee";
     }
 
     @GetMapping("admin/employee/update/{id}")
@@ -86,7 +94,7 @@ public class AdminMainController {
     @PostMapping("/admin/serve/add")
     public String adminServeAddPost(@ModelAttribute ServeForm serveForm, Model model){
         serveService.addServe(serveForm);
-        return "redirect:/admin_serve";
+        return "redirect:/admin/serve";
     }
 
     @GetMapping("admin/serve/update/{id}")
@@ -122,7 +130,7 @@ public class AdminMainController {
     @PostMapping("/admin/product/add")
     public String adminProductAddPost(@ModelAttribute ProductForm productForm, Model model){
         productService.addProduct(productForm);
-        return "redirect:/admin_product";
+        return "redirect:/admin/product";
     }
 
     @GetMapping("admin/product/update/{id}")
@@ -134,7 +142,7 @@ public class AdminMainController {
     }
 
     @PostMapping("admin/product/update/{id}")
-    public String udatePEmployee(@ModelAttribute ProductForm productForm, @PathVariable("id") int id, Model model) {
+    public String updatePProduct(@ModelAttribute ProductForm productForm, @PathVariable("id") int id, Model model) {
 
         productService.update(id, productForm);
 

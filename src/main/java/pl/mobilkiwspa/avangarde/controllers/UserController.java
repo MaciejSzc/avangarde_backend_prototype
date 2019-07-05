@@ -30,7 +30,10 @@ public class UserController {
             model.addAttribute("info", "Login lub haslo nieprawidlowe");
             return "login";
         }
-        return "redirect:/booking";
+        if(userService.getLoginUser().isPresent() && !userService.getLoginUser().get().isAdmin()){
+            return "redirect:/booking";
+        }
+        return "redirect:/admin";
     }
 
 

@@ -16,6 +16,8 @@ public class UserEntity {
     private String telephone;
     private String email;
     private @JsonIgnore String password;
+    @Column(name="is_admin")
+    private @GeneratedValue boolean isAdmin;
 
     /*@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL}, fetch = FetchType.LAZY) //lazy i eager
             List<BookingEntity> bookings;*/

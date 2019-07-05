@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin Product</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
-<table>
+<table class="table table-hover">
     <tr>
-        <th>Nazwa</th>
-        <th>Ilość</th>
+        <th scope="col">Nazwa</th>
+        <th scope="col">Ilość</th>
     </tr>
 
     <tr th:each="product : ${products}">
@@ -18,7 +20,7 @@
 
 
         <td>
-            <a th:href="'/admin/product/update' + ${product.getId()}"
+            <a th:href="'/admin/product/update/' + ${product.getId()}"
                th:text="${'Edytuj'}">
             </a>
         </td>
@@ -26,7 +28,7 @@
     </tr>
 </table>
 </br>
-<a href="/admin/employee/add">Dodaj pracownika.</a>
+<a href="/admin/product/add">Dodaj produkt</a>
 </br></br>
 <a href="/admin">Powrót do menu</a>
 </body>
